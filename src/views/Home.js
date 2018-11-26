@@ -5,8 +5,8 @@ import { connect } from 'react-redux';
 import { setHomeTitle, setSearchText } from '../actions/HomeActions'
 
 const SearchNavBar = props => (
-    <View>
-        <TextInput onChangeText={(text) => { props.setSearchText(text) }} />
+    <View style={{ width: '100%'}}>
+        <TextInput style={{ height: 40, width: '100%' }} onChangeText={(text) => { props.setSearchText(text) }} />
     </View>
 )
 

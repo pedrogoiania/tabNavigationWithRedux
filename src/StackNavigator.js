@@ -9,26 +9,46 @@ import Home from './views/Home'
 import Scene1 from './views/Scene1'
 import Scene2 from './views/Scene2'
 
-const StackNavigatorIOS = createStackNavigator({
-    tabNavigation: createBottomTabNavigator({
-        Home
-    }, {
-            defaultNavigationOptions: ({ navigation }) => ({
-                tabBarIcon: ({ focused, horizontal, tintColor }) => {
-                    const { routeName } = navigation.state;
-                    let iconName;
-                    if (routeName === 'Home') {
-                        iconName = `ios-information-circle${focused ? '' : '-outline'}`;
+const StackNavigatorIOS = createStackNavigator(
+    {
+        Scene2,
+        tabNavigation: {
+            screen: createBottomTabNavigator(
+                {
+                    Home,
+                    Scene1
+                }, {
+                    defaultNavigationOptions: ({ navigation }) => ({
+                        tabBarIcon: ({ focused, horizontal, tintColor }) => {
+                            const { routeName } = navigation.state;
+                            let iconName;
+                            if (routeName === 'Home') {
+                                iconName = `ios-information-circle${focused ? '' : '-outline'}`;
+                            }
+                            if (routeName === 'Scene1') {
+                                iconName = `ios-information-circle${focused ? '' : '-outline'}`;
+                            }
+                            return <Ionicons name={iconName} size={horizontal ? 20 : 25} color={tintColor} />;
+                        }
+                    }),
+                    tabBarOptions: {
+                        activeTintColor: 'tomato',
+                        inactiveTintColor: 'gray',
                     }
-                    return <Ionicons name={iconName} size={horizontal ? 20 : 25} color={tintColor} />;
                 }
-            }),
-            tabBarOptions: {
-                activeTintColor: 'tomato',
-                inactiveTintColor: 'gray',
+            ),
+            navigationOptions: ({ navigation }) => {
+                let searchNavBar = navigation.state.routes[0].params && navigation.state.routes[0].params.searchNavBar
+                return ({
+                    // header: searchNavBar,
+                    headerTitle: searchNavBar
+                })
             }
-        })
-})
+        }
+    }, {
+        initialRouteName: 'tabNavigation',
+    }
+)
 
 let searchNavBar = null
 
@@ -36,9 +56,6 @@ const StackNavigatorAndroid = createStackNavigator(
     {
         Scene2,
         tabNavigation: {
-            params: {
-                paramTest: 'teste'
-            },
             screen: createMaterialTopTabNavigator(
                 {
                     Home: {
@@ -74,19 +91,12 @@ const StackNavigatorAndroid = createStackNavigator(
                 }
             ),
             navigationOptions: ({ navigation }) => {
-
-
                 let searchNavBar = navigation.state.routes[0].params && navigation.state.routes[0].params.searchNavBar
-                console.log(navigation)
-
-
                 return ({
                     header: searchNavBar,
                 })
             }
-
         }
-
     }, {
         initialRouteName: 'tabNavigation',
     }
