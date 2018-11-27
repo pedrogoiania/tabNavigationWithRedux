@@ -1,21 +1,18 @@
 import React, { Component } from 'react';
-import { Text, View, Button, TextInput } from 'react-native';
+import { Text, View, Button, TextInput, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 
 import { setHomeTitle, setSearchText } from '../actions/HomeActions'
+import Search from '../components/Search';
 
-const SearchNavBar = props => (
-    <View style={{ width: '100%'}}>
-        <TextInput style={{ height: 40, width: '100%' }} onChangeText={(text) => { props.setSearchText(text) }} />
-    </View>
-)
+
 
 class Home extends Component {
 
 
 
     componentDidMount() {
-        this.props.navigation.setParams({ searchNavBar: <SearchNavBar setSearchText={this.props.setSearchText} /> })
+        this.props.navigation.setParams({ searchNavBar: <Search onChangeText={this.props.setSearchText} /> })
     }
 
     render() {
@@ -25,6 +22,7 @@ class Home extends Component {
 
         return (
             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                
                 <Text>{homeTitle}</Text>
                 <Button title='Change home text' onPress={() => { this.props.setHomeTitle() }} />
             </View>

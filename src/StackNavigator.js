@@ -41,7 +41,10 @@ const StackNavigatorIOS = createStackNavigator(
                 let searchNavBar = navigation.state.routes[0].params && navigation.state.routes[0].params.searchNavBar
                 return ({
                     // header: searchNavBar,
-                    headerTitle: searchNavBar
+                    headerTitle: searchNavBar,
+                    headerStyle: { 
+                        backgroundColor: 'blue'
+                    }
                 })
             }
         }
@@ -49,8 +52,6 @@ const StackNavigatorIOS = createStackNavigator(
         initialRouteName: 'tabNavigation',
     }
 )
-
-let searchNavBar = null
 
 const StackNavigatorAndroid = createStackNavigator(
     {
