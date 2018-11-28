@@ -42,7 +42,7 @@ const StackNavigatorIOS = createStackNavigator(
                 return ({
                     // header: searchNavBar,
                     headerTitle: searchNavBar,
-                    headerStyle: { 
+                    headerStyle: {
                         backgroundColor: 'blue'
                     }
                 })
@@ -55,7 +55,16 @@ const StackNavigatorIOS = createStackNavigator(
 
 const StackNavigatorAndroid = createStackNavigator(
     {
-        Scene2,
+        Scene2: {
+            screen: Scene2,
+            navigationOptions: ({ navigation }) => {
+                return ({
+                    headerStyle: {
+                        backgroundColor: 'blue'
+                    }
+                })
+            }
+        },
         tabNavigation: {
             screen: createMaterialTopTabNavigator(
                 {
@@ -83,18 +92,21 @@ const StackNavigatorAndroid = createStackNavigator(
                                 iconName = `ios-information-circle${focused ? '' : '-outline'}`;
                             }
                             return <Ionicons name={iconName} size={horizontal ? 20 : 25} color={tintColor} />;
-                        }
+                        },
                     }),
                     tabBarOptions: {
                         activeTintColor: 'white',
                         inactiveTintColor: 'gray',
-                    }
+                    },
                 }
             ),
             navigationOptions: ({ navigation }) => {
                 let searchNavBar = navigation.state.routes[0].params && navigation.state.routes[0].params.searchNavBar
                 return ({
-                    header: searchNavBar,
+                    headerTitle: searchNavBar,
+                    headerStyle: {
+                        backgroundColor: 'blue'
+                    }
                 })
             }
         }

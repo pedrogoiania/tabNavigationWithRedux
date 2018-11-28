@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, Button, TextInput, TouchableOpacity } from 'react-native';
+import { Text, View, Button, TextInput, TouchableOpacity, Keyboard } from 'react-native';
 import { connect } from 'react-redux';
 
 import { setHomeTitle, setSearchText } from '../actions/HomeActions'
@@ -12,7 +12,17 @@ class Home extends Component {
 
 
     componentDidMount() {
-        this.props.navigation.setParams({ searchNavBar: <Search onChangeText={this.props.setSearchText} /> })
+
+        console.log(this.props.HomeReducer)
+
+        this.props.navigation.setParams({
+            searchNavBar:
+                <Search
+                    value={this.props.HomeReducer.searchText}
+                    cancelOnPress={() => { Keyboard.dismiss() }}
+                    onChangeText={(text) => { this.props.setSearchText(text) }}
+                />
+        })
     }
 
     render() {
@@ -22,7 +32,7 @@ class Home extends Component {
 
         return (
             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                
+
                 <Text>{homeTitle}</Text>
                 <Button title='Change home text' onPress={() => { this.props.setHomeTitle() }} />
             </View>
