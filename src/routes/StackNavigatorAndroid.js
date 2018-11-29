@@ -18,13 +18,14 @@ const StackNavigatorAndroid = createDrawerNavigator(
             {
                 Scene2: {
                     screen: Scene2,
-                    navigationOptions: ({ navigation }) => {
-                        return ({
-                            headerStyle: {
-                                backgroundColor: 'blue'
-                            }
-                        })
-                    }
+                    mode: 'modal',
+                    navigationOptions: ({ navigation }) => ({
+                        title: 'Scene 2',
+                        mode: 'modal',
+                        transtionConfig: {
+                            isModal: true
+                        }
+                    })
                 },
                 tabNavigation: {
                     screen: createMaterialTopTabNavigator(
@@ -60,7 +61,7 @@ const StackNavigatorAndroid = createDrawerNavigator(
                                     backgroundColor: colors.light,
                                 },
                                 indicatorStyle: {
-                                    color: colors.primaryDark
+                                    backgroundColor: colors.primary
                                 },
                                 activeTintColor: colors.primary,
                                 inactiveTintColor: colors.secondary,
@@ -78,6 +79,15 @@ const StackNavigatorAndroid = createDrawerNavigator(
                     }
                 }
             }, {
+                defaultNavigationOptions: ({ navigation }) => ({
+                    headerStyle: {
+                        backgroundColor: colors.primaryDark,
+                    },
+                    headerTintColor: '#fff',
+                    headerBackTitleStyle: {
+                        color: 'white'
+                    }
+                }),
                 initialRouteName: 'tabNavigation',
             }
         )

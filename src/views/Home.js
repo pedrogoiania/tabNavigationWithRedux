@@ -6,6 +6,7 @@ import { DrawerActions } from 'react-navigation-drawer';
 
 import { setHomeTitle, setSearchText } from '../actions/HomeActions'
 import Search from '../components/Search';
+import colors from '../helpers/colors';
 
 class Home extends Component {
 
@@ -32,7 +33,7 @@ class Home extends Component {
 
         return (
             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                <StatusBar barStyle='light-content' />
+                <StatusBar barStyle='light-content' backgroundColor={colors.primary} />
                 <Text>{homeTitle}</Text>
                 <Button title='Change home text' onPress={() => { this.props.setHomeTitle() }} />
             </View>
