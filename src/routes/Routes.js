@@ -5,7 +5,7 @@ import StackNavigator from './StackNavigator'
 const AppContainer = createAppContainer(StackNavigator)
 
 class Routes extends Component {
-    render(){
+    render() {
         return (
             <AppContainer />
         )

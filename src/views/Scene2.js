@@ -4,19 +4,6 @@ import { connect } from 'react-redux';
 
 class Scene2 extends Component {
 
-    static navigationOptions({ navigation }) {
-        return {
-            headerTitle: <Text>Scene 2</Text>,
-            headerRight: (
-                <Button
-                    onPress={() => { alert('test') }}
-                    title="+1"
-                    color="#fff"
-                />
-            ),
-        };
-    };
-
     render() {
         return (
             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>

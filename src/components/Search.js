@@ -8,14 +8,14 @@ class Search extends Component {
     render() {
         return (
             <View style={{ width: '100%', alignItems: 'center', flexDirection: 'row', marginHorizontal: 8 }}>
-                {
+                {/* {
                     Platform.OS == 'android' &&
-                    <TouchableOpacity onPress={this.props.cancelOnPress}>
+                    <TouchableOpacity onPress={this.props.drawerOnPress}>
                         <View style={{ flex: 1, paddingHorizontal: 8, justifyContent: 'center', alignItems: 'center', marginRight: 10 }}>
                             <Icon name="bars" size={16} color="white" />
                         </View>
                     </TouchableOpacity>
-                }
+                } */}
                 <InputSearch
                     onChangeText={this.props.onChangeText}
                     value={this.props.value}
@@ -45,7 +45,7 @@ class InputSearch extends Component {
     }
     render() {
         return (
-            <View style={{ flex: Platform.OS == 'android' ? 7 : 8, marginLeft: Platform.OS == 'ios' ? 10 : 0, alignItems: 'center', paddingHorizontal: 4, flexDirection: 'row', backgroundColor: 'rgba(255,255,255,0.6)', borderRadius: 4 }}>
+            <View style={{ flex: Platform.OS == 'android' ? 7 : 8, marginLeft: Platform.OS == 'ios' ? 4 : 0, marginRight: Platform.OS == 'android' ? 15 : 0, alignItems: 'center', paddingHorizontal: 4, flexDirection: 'row', backgroundColor: 'rgba(255,255,255,0.6)', borderRadius: 4 }}>
                 <View style={{ flex: 1, alignItems: 'center' }}>
                     <Icon name="search" size={16} color="white" />
                 </View>
@@ -62,7 +62,7 @@ class InputSearch extends Component {
                             height: 35,
                             paddingVertical: 4,
                             color: 'white',
-                            marginRight: Platform.OS == 'android' ? 10 : 0,
+
                         }}
                         underlineColorAndroid='transparent'
                     />
