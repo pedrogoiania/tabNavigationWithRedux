@@ -17,7 +17,6 @@ class Home extends Component {
         this.props.navigation.setParams({
             searchNavBar:
                 <Search
-                    // 
                     drawerOnPress={() => this.props.navigation.dispatch(DrawerActions.toggleDrawer())}
                     value={this.props.HomeReducer.searchText}
                     cancelOnPress={() => { Keyboard.dismiss() }}
